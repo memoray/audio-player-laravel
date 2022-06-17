@@ -2,20 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class UpdateSongRequest extends FormRequest
+class UpdateSongRequest extends AdminRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +12,12 @@ class UpdateSongRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required',
+            'filename'=>'required|mimes:mp3,ma4',
+            'length'=>'required',
+            'image'=>'required|image',
+            'category_id'=>'required',
+            'artist_id'=>'required'
         ];
     }
 }
