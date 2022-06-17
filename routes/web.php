@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\HomeController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,4 +26,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('categories',CategoryController::class);
+
+Route::group([
+    'middleware' => 'auth',
+], function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('artists', ArtistController::class);
+    Route::resource('songs', SongController::class);
+});
+
+
+
+

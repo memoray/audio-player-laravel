@@ -15,8 +15,8 @@ class CreateSongsTable extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('artist_id');
+            $table->unsignedInteger('category_id')->index('category_id');
+            $table->unsignedInteger('artist_id')->index('artist_id');
             $table->string('title');
             $table->string('filename', 100);
             $table->unsignedInteger('length');
