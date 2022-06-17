@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SongController;
+use App\Http\Controllers\HomeController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +25,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'middleware' => 'auth',
+], function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('artists', ArtistController::class);
+    Route::resource('songs', SongController::class);
+});
+
+
+
+
