@@ -10,4 +10,8 @@ class Category extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function songs(){
+        return $this->hasMany(Song::class);
+    }
 }

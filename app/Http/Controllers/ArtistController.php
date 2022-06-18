@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateArtistRequest;
 use App\Models\Artist;
+use App\Models\Song;
 use Illuminate\Http\Response;
 
 class ArtistController extends Controller
@@ -16,7 +17,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $data = Artist::paginate(10);
+        return view('admin.artists.index', compact('data'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.artists.create');
     }
 
     /**
@@ -37,7 +39,8 @@ class ArtistController extends Controller
      */
     public function store(StoreArtistRequest $request)
     {
-        //
+        Artist::create($request->validated());
+        return redirect('/artists')->with('success', 'Artist created successfully');
     }
 
     /**
@@ -59,7 +62,7 @@ class ArtistController extends Controller
      */
     public function edit(Artist $artist)
     {
-        //
+        return view('admin.artists.edit', compact('artist'));
     }
 
     /**
@@ -71,7 +74,8 @@ class ArtistController extends Controller
      */
     public function update(UpdateArtistRequest $request, Artist $artist)
     {
-        //
+        $artist->update($request->validated());
+        return redirect('/artists')->with('success', 'Artist updated successfully');
     }
 
     /**
@@ -82,6 +86,7 @@ class ArtistController extends Controller
      */
     public function destroy(Artist $artist)
     {
-        //
+        $artist->delete();
+        return redirect('/artists')->with('success', 'Artist deleted successfully');
     }
 }

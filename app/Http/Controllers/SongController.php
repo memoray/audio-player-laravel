@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
+use App\Models\Artist;
+use App\Models\Category;
 use App\Models\Song;
 use Illuminate\Http\Response;
 
 class SongController extends Controller
 {
+    public function __construct()
+    {
+        $this->categories = Category::all()->keyBy('id')->map->name;
+        $this->artists = Artist::all()->keyBy('id')->map->name;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,8 @@ class SongController extends Controller
      */
     public function index()
     {
-        //
+        $data = Song::paginate(10);
+        return view('admin.songs.index', compact('data'));
     }
 
     /**
@@ -26,7 +35,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.songs.create');
     }
 
     /**
@@ -37,7 +46,8 @@ class SongController extends Controller
      */
     public function store(StoreSongRequest $request)
     {
-        //
+        Song::create($request->validated());
+        return redirect('/songs')->with('success', 'Song created successfully');
     }
 
     /**
@@ -59,7 +69,7 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        //
+        return view('admin.songs.edit', compact('song'));
     }
 
     /**
@@ -71,7 +81,8 @@ class SongController extends Controller
      */
     public function update(UpdateSongRequest $request, Song $song)
     {
-        //
+        $song->update($request->validated());
+        return redirect('/songs')->with('success', 'Song updated successfully');
     }
 
     /**
@@ -82,6 +93,7 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        //
+        $song->delete();
+        return redirect('/songs')->with('success', 'Song deleted successfully');
     }
 }

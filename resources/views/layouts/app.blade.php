@@ -32,9 +32,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    <x-navigation.left/>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -76,6 +74,7 @@
         </nav>
 
         <main class="py-4">
+            <x-flash-message />
             @yield('content')
         </main>
     </div>
