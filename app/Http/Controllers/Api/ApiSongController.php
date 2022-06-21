@@ -15,7 +15,7 @@ class ApiSongController extends Controller
      */
     public function index()
     {
-        $data = Song::all();
+        $data = Song::with(['artist','category'])->get();
         return response()->json($data);
     }
 }
