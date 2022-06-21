@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use getID3;
 use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
 use App\Models\Artist;
 use App\Models\Category;
 use App\Models\Song;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class SongController extends Controller
 {
@@ -15,6 +17,8 @@ class SongController extends Controller
     {
         $this->categories = Category::all()->keyBy('id')->map->name;
         $this->artists = Artist::all()->keyBy('id')->map->name;
+
+        $this->getID3 = new getID3();
     }
 
     /**
@@ -35,7 +39,10 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('admin.songs.create');
+        return view('admin.songs.create', [
+            'categories'=>$this->categories,
+            'artists'=>$this->artists,
+        ]);
     }
 
     /**
@@ -46,7 +53,25 @@ class SongController extends Controller
      */
     public function store(StoreSongRequest $request)
     {
-        Song::create($request->validated());
+        $validated = $request->validated();
+
+        $filename = $request->file('filename');
+        if($filename) {
+            $songName = $filename->hashName();
+            Storage::disk('songs')->putFileAs('', $filename, $songName);
+            $info = $this->getID3->analyze(storage_path('app/public/songs/'.$songName));
+            $validated['filename'] = $songName;
+            $validated['length']=$info['playtime_string'];
+        }
+
+        $filename = $request->file('image');
+        if($filename) {
+            $albumImage = $filename->hashName();
+            Storage::disk('albumImages')->putFileAs('', $filename, $albumImage);
+            $validated['image'] = $albumImage;
+        }
+
+        Song::create($validated);
         return redirect('/songs')->with('success', 'Song created successfully');
     }
 
@@ -58,7 +83,7 @@ class SongController extends Controller
      */
     public function show(Song $song)
     {
-        //
+        return view('admin.songs.show', compact('song'));
     }
 
     /**
@@ -69,7 +94,11 @@ class SongController extends Controller
      */
     public function edit(Song $song)
     {
-        return view('admin.songs.edit', compact('song'));
+        return view('admin.songs.edit', [
+            'categories'=>$this->categories,
+            'artists'=>$this->artists,
+            'song'=>$song,
+        ]);
     }
 
     /**
@@ -81,7 +110,25 @@ class SongController extends Controller
      */
     public function update(UpdateSongRequest $request, Song $song)
     {
-        $song->update($request->validated());
+        $validated = $request->validated();
+
+        $filename = $request->file('filename');
+        if($filename) {
+            $songName = $filename->hashName();
+            Storage::disk('songs')->putFileAs('', $filename, $songName);
+            $info = $this->getID3->analyze(storage_path('app/public/songs/'.$songName));
+            $validated['filename'] = $songName;
+            $validated['length']=$info['playtime_string'];
+        }
+
+        $filename = $request->file('image');
+        if($filename) {
+            $albumImage = $filename->hashName();
+            Storage::disk('albumImages')->putFileAs('', $filename, $albumImage);
+            $validated['image'] = $albumImage;
+        }
+
+        $song->update($validated);
         return redirect('/songs')->with('success', 'Song updated successfully');
     }
 
