@@ -17,7 +17,6 @@ class SongController extends Controller
     {
         $this->categories = Category::all()->keyBy('id')->map->name;
         $this->artists = Artist::all()->keyBy('id')->map->name;
-
         $this->getID3 = new getID3();
     }
 
@@ -117,8 +116,8 @@ class SongController extends Controller
             $songName = $filename->hashName();
             Storage::disk('songs')->putFileAs('', $filename, $songName);
             $info = $this->getID3->analyze(storage_path('app/public/songs/'.$songName));
-            $validated['filename'] = $songName;
-            $validated['length']=$info['playtime_string'];
+            $validated['filename']  = $songName;
+            $validated['length']    = $info['playtime_string'];
         }
 
         $filename = $request->file('image');
@@ -140,6 +139,7 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
+        die(Storage::disk('songs')->exists($song->filename));
         $song->delete();
         return redirect('/songs')->with('success', 'Song deleted successfully');
     }
