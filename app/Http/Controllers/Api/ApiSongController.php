@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Song;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SongResource;
 use Illuminate\Http\Response;
 
 class ApiSongController extends Controller
@@ -16,6 +17,7 @@ class ApiSongController extends Controller
     public function index()
     {
         $data = Song::with(['artist','category'])->get();
+//        $data = SongResource::collection($data);
         return response()->json($data);
     }
 }
