@@ -119,6 +119,8 @@ class SongController extends Controller
             $info = $this->getID3->analyze(storage_path('app/public/songs/'.$songName));
             $validated['filename'] = $songName;
             $validated['length']=$info['playtime_string'];
+        } else {
+            unset($validated['filename']);
         }
 
         $filename = $request->file('image');
@@ -126,6 +128,8 @@ class SongController extends Controller
             $albumImage = $filename->hashName();
             Storage::disk('albumImages')->putFileAs('', $filename, $albumImage);
             $validated['image'] = $albumImage;
+        } else {
+            unset($validated['image']);
         }
 
         $song->update($validated);
