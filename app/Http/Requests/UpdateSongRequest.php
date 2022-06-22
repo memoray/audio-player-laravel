@@ -13,9 +13,9 @@ class UpdateSongRequest extends AdminRequest
     {
         return [
             'title'=>'required',
-            'filename'=>'required|mimes:mp3,ma4',
-            'length'=>'required',
-            'image'=>'required|image',
+            'filename'=>'nullable|mimes:mp3',
+            'length'=>'',
+            'image'=>'nullable|image',
             'category_id'=>'required',
             'artist_id'=>'required'
         ];

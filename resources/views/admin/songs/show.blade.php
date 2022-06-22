@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container">
+    <div class="view-container">
         <h1>Play Songs</h1>
-        <table>
+        <table class="songTitle">
             <tr>
-                <th>Artist</th>
+                <th >Artist</th>
                 <td>{{ $song->artist->name}}</td>
             </tr>
             <tr>
@@ -14,7 +14,7 @@
             </tr>
         </table>
         <div class="player">
-            <img class="img" src="/storage/albumImages/{{ $song->image }}" height="200">
+            <img class="img" src="/storage/albumImages/{{ $song->image }}" height="300">
         </div>
         <div>
             <audio controls>
