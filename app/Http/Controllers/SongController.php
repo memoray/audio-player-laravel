@@ -17,6 +17,7 @@ class SongController extends Controller
     {
         $this->categories = Category::all()->keyBy('id')->map->name;
         $this->artists = Artist::all()->keyBy('id')->map->name;
+
         $this->getID3 = new getID3();
     }
 
@@ -116,8 +117,8 @@ class SongController extends Controller
             $songName = $filename->hashName();
             Storage::disk('songs')->putFileAs('', $filename, $songName);
             $info = $this->getID3->analyze(storage_path('app/public/songs/'.$songName));
-            $validated['filename']  = $songName;
-            $validated['length']    = $info['playtime_string'];
+            $validated['filename'] = $songName;
+            $validated['length']=$info['playtime_string'];
         } else {
             unset($validated['filename']);
         }
