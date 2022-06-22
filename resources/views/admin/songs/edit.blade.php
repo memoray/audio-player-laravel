@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="view-container">
+    <div class="container">
         <h1>Update Song</h1>
 
-        <x-form action="{{ route('songs.update', $song) }}" >
+        <x-form action="{{ route('songs.update', $song) }}" enctype="multipart/form-data">
             @method('put')
                 @bind($song)
                     <x-form-input type="text" class="mb-3" name="title" label="{{ __('Song') }}:" />
