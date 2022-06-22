@@ -143,15 +143,6 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
-        // falls für den datensatz dateien vorhanden sind (songs, bilder etc),
-        // dann vorher löschen.
-        if(Storage::disk('songs')->exists($song->filename)) {
-            Storage::disk('songs')->delete($song->filename);
-        }
-        if(Storage::disk('albumImages')->exists($song->image)) {
-            Storage::disk('albumImages')->delete($song->image);
-        }
-
         $song->delete();
         return redirect('/songs')->with('success', 'Song deleted successfully');
     }
