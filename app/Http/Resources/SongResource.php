@@ -22,7 +22,8 @@ class SongResource extends JsonResource
         /**
          * @var $this Song
          */
-        $baseURL = $_SERVER['HTTP_HOST'];
+        $protocol = stristr($_SERVER['SERVER_PROTOCOL'],'https') ? 'https://' : 'http://';
+        $baseURL = $protocol . $_SERVER['HTTP_HOST'];
         return [
             'title'         => $this->title,
             'artist'        => $this->artist->name,
