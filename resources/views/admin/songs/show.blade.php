@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="view-container">
+    <div class="container">
         <h1>Play Songs</h1>
         <table class="songTitle">
             <tr>
