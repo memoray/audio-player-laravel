@@ -28,7 +28,6 @@
                         <td>
                             <x-form action="{{ route('songs.destroy', $song) }}" method="post">
                                 <a class="btn btn-primary " href="{{ route('songs.edit', $song) }}">{{ __('Edit') }}</a>
-                                @csrf
                                 @method('delete')
                                 <x-form-submit type="submit" class="btn btn-danger delsoft">{{ __('Delete') }}</x-form-submit>
                             </x-form>
