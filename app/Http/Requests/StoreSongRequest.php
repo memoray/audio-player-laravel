@@ -14,7 +14,7 @@ class StoreSongRequest extends AdminRequest
         return [
             'title'=>'required',
             'filename'=>'required|mimes:mp3,ma4',
-            'length'=>'required',
+            'length'=>'',
             'image'=>'required|image',
             'category_id'=>'required',
             'artist_id'=>'required'
