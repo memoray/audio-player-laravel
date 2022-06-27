@@ -3,13 +3,13 @@
 
     <div class="container">
         <h1>Play Songs</h1>
-        <table class="songTitle">
+        <table class="songTitle d-flex justify-content-between">
             <tr>
-                <th >Artist</th>
+                <th >Artist: </th>
                 <td>{{ $song->artist->name}}</td>
             </tr>
             <tr>
-                <th>Song Title</th>
+                <th>Song Title: </th>
                 <td>{{ $song->title}}</td>
             </tr>
         </table>

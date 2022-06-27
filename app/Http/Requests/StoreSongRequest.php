@@ -12,12 +12,12 @@ class StoreSongRequest extends AdminRequest
     public function rules()
     {
         return [
-            'title'         => 'required',
-            'filename'      => 'required|mimes:mp3,ma4',
-            'length'        => '',
-            'image'         =>  'required|image',
-            'category_id'   =>'required',
-            'artist_id'     =>'required'
+            'title'=>'required',
+            'filename'=>'required|mimes:mp3,ma4',
+            'length'=>'',
+            'image'=>'required|image',
+            'category_id'=>'required',
+            'artist_id'=>'required'
         ];
     }
 }
