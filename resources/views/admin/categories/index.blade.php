@@ -5,7 +5,7 @@
 
         <div class="col-md-12 mt-4" style="margin-bottom: 10px;">
             <a class="btn btn-primary" href="{{ route('categories.create') }}">
-                {{ __('Add New Category') }}
+                <i class="bi bi-plus-circle-fill"></i> {{ __('Add New Category') }}
             </a>
         </div>
 
@@ -17,10 +17,10 @@
                     <td>{{ $category->name}}</td>
                     <td class="text-end">
                         <x-form action="{{ route('categories.destroy', $category) }}" method="post">
-                            <a class="btn btn-primary" href="{{ route('categories.edit', $category) }}">{{ __('Edit') }}</a>
+                            <a class="btn btn-primary" href="{{ route('categories.edit', $category) }}"><i class="bi bi-pencil-square"></i> {{ __('Edit') }}</a>
                             @csrf
                             @method('delete')
-                            <x-form-submit type="submit" class="btn btn-danger delsoft">{{ __('Delete') }}</x-form-submit>
+                            <x-form-submit type="submit" class="btn btn-danger delsoft"><i class="bi bi-trash3-fill"></i> {{ __('Delete') }}</x-form-submit>
                         </x-form>
                     </td>
                 </tr>

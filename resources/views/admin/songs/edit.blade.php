@@ -19,7 +19,7 @@
                     <x-form-input type="file" class="mb-3" name="image" label="{{ __('Bilddatei') }}:" />
 
                 @endbind
-                <x-form-submit class="mt-3">{{ __('Update') }}</x-form-submit>
+                <x-form-submit class="mt-3"><i class="bi bi-arrow-repeat"></i> {{ __('Update') }}</x-form-submit>
                 </x-form>
                 </div>
                 @endsection
