@@ -140,6 +140,27 @@ a {
     }
 }
 
+h3 {
+    &.alert {
+        &.alert-success {
+            opacity: 1;
+            display: block;
+            -webkit-transition: opacity $fade-delay ease-in-out;
+            -moz-transition: opacity $fade-delay ease-in-out;
+            -ms-transition: opacity $fade-delay ease-in-out;
+            -o-transition: opacity $fade-delay ease-in-out;
+            transition: opacity $fade-delay ease-in-out;
+            &.fadeout {
+                opacity:0;
+            }
+        }
+        span {
+            .bi-x-circle-fill {
+                cursor: pointer;
+            }
+        }
+    }
+}
 
 
 
