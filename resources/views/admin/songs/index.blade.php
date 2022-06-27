@@ -4,7 +4,7 @@
         <h1>Songs</h1>
         <div class="" style="margin-bottom: 10px;">
             <a class="btn btn-primary" href="{{ route('songs.create') }}">
-                {{ __('Add New Song') }}
+                <i class="bi bi-plus-circle-fill"></i> {{ __('Add New Song') }}
             </a>
         </div>
 
