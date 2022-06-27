@@ -14,9 +14,9 @@
 
         <table class="table table-striped">
             @foreach($data as $artist)
-                <tr>
+                <tr class="align-middle">
                     <td>{{ $artist->name}}</td>
-                    <td>
+                    <td class="text-end">
                         <x-form action="{{ route('artists.destroy', $artist) }}" method="post">
                             <a class="btn btn-primary" href="{{ route('artists.edit', $artist) }}">{{ __('Edit') }}</a>
                             @csrf

@@ -13,9 +13,9 @@
 
         <table class="table table-striped">
             @foreach($data as $category)
-                <tr>
+                <tr class="align-middle">
                     <td>{{ $category->name}}</td>
-                    <td>
+                    <td class="text-end">
                         <x-form action="{{ route('categories.destroy', $category) }}" method="post">
                             <a class="btn btn-primary" href="{{ route('categories.edit', $category) }}">{{ __('Edit') }}</a>
                             @csrf

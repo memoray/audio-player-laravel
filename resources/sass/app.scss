@@ -1,11 +1,13 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons';
 
 //Classes
 .img {
@@ -17,5 +19,78 @@
     display: flex;
     font-size: 20px;
 }
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: darkblue;
+}
+
+.navbar {
+    &.navbar-dark {
+        .container {
+            .collapse {
+                .navbar-nav {
+                    .nav-item{
+                        .nav-link{
+                            color: white;
+                        }
+                    }
+                }
+            }
+            .navbar-toggler {
+                .navbar-toggler-icon {
+                    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e</svg>");
+                }
+            }
+        }
+    }
+}
+
+.btn-primary {
+    background-color: darkblue;
+    border-color: darkblue;
+}
+
+.btn-danger {
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.customPagination{
+    .page-link {
+        background-color: darkblue;
+        color: white;
+    }
+    .page-item {
+
+        &.disabled {
+
+            .page-link {
+                background-color: darkblue;
+                color: white;
+            }
+
+        }
+
+    }
+}
+
+
+
+
+a {
+    color: black;
+}
+
+.myFile {
+    color: darkblue;
+}
+
+
+
+
 
 
