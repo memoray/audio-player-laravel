@@ -2,11 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Song;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
 use JsonSerializable;
 
 class SongResource extends JsonResource
@@ -19,19 +17,16 @@ class SongResource extends JsonResource
      */
     public function toArray($request)
     {
-        /**
-         * @var $this Song
-         */
-        $protocol = stristr($_SERVER['SERVER_PROTOCOL'],'https') ? 'https://' : 'http://';
-        $baseURL = $protocol . $_SERVER['HTTP_HOST'];
+        $protocol = preg_match("/^HTTPS/", $_SERVER['SERVER_PROTOCOL']) ? 'https://' : 'http://';
+        $serverAddress = $protocol . $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
         return [
-            'title'         => $this->title,
-            'artist'        => $this->artist->name,
-            'category'      => $this->category->name,
-            'title'         => $this->title,
-            'image_url'     => $baseURL . Storage::url('public/albumImages/' . $this->image),
-            'song_url'      => $baseURL . Storage::url('public/songs/' . $this->filename),
-            'song_length'   => $this->length,
+            'id'        => $this->id,
+            'tile'      => $this->title,
+            'category'  => $this->category->name,
+            'artist'    => $this->artist->name,
+            'length'    => $this->length,
+            'image'     => $serverAddress . '/storage/albumimages/' . $this->image,
+            'song'      => $serverAddress . '/storage/songs/' . $this->filename,
         ];
     }
 }
