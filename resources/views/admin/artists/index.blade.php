@@ -18,10 +18,10 @@
                     <td>{{ $artist->name}}</td>
                     <td class="text-end">
                         <x-form action="{{ route('artists.destroy', $artist) }}" method="post">
-                            <a class="btn btn-primary" href="{{ route('artists.edit', $artist) }}"><i class="bi bi-pencil-square"></i> {{ __('Edit') }}</a>
+                            <a class="btn btn-primary" href="{{ route('artists.edit', $artist) }}"><i class="bi bi-pencil-square"></i> <span class="d-none d-md-inline">{{ __('Edit') }}</span></a>
                             @csrf
                             @method('delete')
-                            <x-form-submit type="submit" class="btn btn-danger delsoft"><i class="bi bi-trash3-fill"></i> {{ __('Delete') }}</x-form-submit>
+                            <x-form-submit type="submit" class="btn btn-danger delsoft"><i class="bi bi-trash3-fill"></i> <span class="d-none d-md-inline">{{ __('Delete') }}</span></x-form-submit>
                         </x-form>
                     </td>
                 </tr>

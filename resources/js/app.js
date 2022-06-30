@@ -4,7 +4,7 @@ window.onload = () => {
     document.querySelectorAll('.delsoft')
          .forEach(item => item.onclick = () => confirm('Daten wirklich löschen?'));
 
-    // handle fadeout and closing of flash-masseges
+
     const flashMsg = document.querySelector('h3.alert');
     if(flashMsg) {
         const btnClose = flashMsg.querySelector('span .bi-x-circle-fill');
@@ -21,3 +21,4 @@ window.onload = () => {
         }, 3000);
     }
 }
+
