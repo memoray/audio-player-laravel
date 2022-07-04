@@ -17,16 +17,18 @@ class SongResource extends JsonResource
      */
     public function toArray($request)
     {
-        $protocol = preg_match("/^HTTPS/", $_SERVER['SERVER_PROTOCOL']) ? 'https://' : 'http://';
+        $protocol = preg_match("/^HTTPS/", $_SERVER['SERVER_PROTOCOL'] ) ? "https://" : "http://";
         $serverAddress = $protocol . $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
         return [
             'id'        => $this->id,
-            'tile'      => $this->title,
-            'category'  => $this->category->name,
+            'title'     => $this->title,
             'artist'    => $this->artist->name,
+            'category'  => $this->category->name,
             'length'    => $this->length,
-            'image'     => $serverAddress . '/storage/albumimages/' . $this->image,
-            'song'      => $serverAddress . '/storage/songs/' . $this->filename,
+            'image'     => $serverAddress . '/storage/albumImages/' . $this->image,
+            'song'       => $serverAddress . '/storage/songs/' . $this->filename,
+
+
         ];
     }
 }
