@@ -27,8 +27,6 @@ class SongResource extends JsonResource
             'length'    => $this->length,
             'image'     => $serverAddress . '/storage/albumImages/' . $this->image,
             'song'       => $serverAddress . '/storage/songs/' . $this->filename,
-
-
         ];
     }
 }
