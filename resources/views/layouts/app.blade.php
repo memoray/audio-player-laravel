@@ -13,7 +13,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
     <!-- Styles -->
     @stack('styles')
     @production
@@ -28,9 +27,7 @@
     @else
         <link rel="stylesheet" href="{{ asset('js/app.js') }}">
     @endproduction
-
     @stack('scripts')
-
 </head>
 <body>
     <div id="app">
