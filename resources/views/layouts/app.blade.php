@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ asset('player_icon.svg') }}" sizes="16x16" type="image/svg">
+    <link rel="icon" href="/player_icon.svg" sizes="16x16" type="image/svg">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -16,10 +16,10 @@
 
     <!-- Styles -->
     @stack('styles')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet" />
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="/js/app.js" defer></script>
     @stack('scripts')
 
 </head>
