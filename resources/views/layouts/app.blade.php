@@ -16,10 +16,19 @@
 
     <!-- Styles -->
     @stack('styles')
-    <link href="/css/app.css" rel="stylesheet" />
+    @production
+        <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @endproduction
 
     <!-- Scripts -->
-    <script src="/js/app.js" defer></script>
+    @production
+        <link rel="stylesheet" href="{{ secure_asset('js/app.js') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('js/app.js') }}">
+    @endproduction
+
     @stack('scripts')
 
 </head>
