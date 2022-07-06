@@ -13,7 +13,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "mews/captcha": "^3.2",
-        "protonemedia/laravel-form-components": "^3.6",
+        "protonemedia/laravel-form-components": "^3.6"
     },
     "require-dev": {
         "kitloong/laravel-migrations-generator": "^6.2",
