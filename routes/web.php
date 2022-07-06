@@ -33,6 +33,9 @@ Route::group([
     Route::resource('categories', CategoryController::class);
     Route::resource('artists', ArtistController::class);
     Route::resource('songs', SongController::class);
+    Route::get('/phpinfo', function () {
+        phpinfo();
+    });
 });
 
 
