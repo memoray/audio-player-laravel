@@ -36,6 +36,7 @@ Route::group([
     Route::get('/phpinfo', function () {
         phpinfo();
     });
+
 });
 
 
