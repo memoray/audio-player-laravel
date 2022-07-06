@@ -20,7 +20,6 @@
     @else
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @endproduction
-
     <!-- Scripts -->
     @production
         <link rel="stylesheet" href="{{ secure_asset('js/app.js') }}">
